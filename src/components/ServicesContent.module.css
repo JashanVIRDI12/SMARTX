@@ -1,0 +1,238 @@
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  min-height: 58vh;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.heroBg { position: absolute; inset: 0; }
+.heroBgImg {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  filter: brightness(0.3) saturate(0.6);
+}
+.heroBgOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,8,0.98) 0%, rgba(7,7,8,0.35) 100%);
+}
+.heroInner {
+  position: relative; z-index: 10;
+  padding: 5rem 2rem;
+  display: flex; flex-direction: column;
+}
+.titleLine { overflow: hidden; }
+.heroTitle {
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 1; color: var(--text);
+  will-change: transform;
+}
+.heroTitleRed { color: var(--red); }
+.heroSub {
+  font-size: 0.98rem; color: rgba(237,232,226,0.52);
+  margin-top: 1.25rem; max-width: 600px;
+  font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.75;
+}
+
+/* ─── Services List ─── */
+.servicesList {
+  background: var(--bg);
+  padding: 7rem 0;
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.serviceRow:first-child { border-top: 1px solid var(--border); }
+
+/* Alternate rows flip the image to the right */
+.serviceRowAlt { direction: rtl; }
+.serviceRowAlt > * { direction: ltr; }
+
+.serviceRowImg {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.serviceRowImg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.serviceRow:hover .serviceRowImg img { transform: scale(1.04); }
+
+.serviceRowImgNum {
+  position: absolute;
+  bottom: 1.25rem; right: 1.25rem;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4rem; line-height: 1;
+  color: rgba(206,31,43,0.25);
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+
+.serviceRowText {
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.serviceRowIcon {
+  width: 54px; height: 54px;
+  border: 1px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red); margin-bottom: 1.25rem;
+}
+
+.serviceRowTitle {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 1.25rem; line-height: 1.05; color: var(--text);
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+.serviceRowTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 48px; height: 3px;
+  background: var(--red);
+}
+
+.serviceRowBody {
+  font-size: 0.94rem; line-height: 1.82;
+  color: var(--text-dim); margin-bottom: 2rem;
+}
+
+/* ─── Featured ─── */
+.featured {
+  padding: 9rem 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.featuredHeader { margin-bottom: 4rem; }
+.featuredTitle {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  margin-top: 1.25rem; line-height: 1.05;
+}
+.red { color: var(--red); }
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+}
+.featuredCard {
+  background: var(--surface);
+  padding: 3rem 2.5rem;
+  border-top: 3px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+}
+.featuredCard:hover {
+  border-top-color: var(--red);
+  background: var(--surface-2);
+}
+.featuredCardIcon {
+  width: 60px; height: 60px;
+  border: 1px solid var(--border-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red); margin-bottom: 1.75rem;
+  transition: background 0.3s, border-color 0.3s;
+}
+.featuredCard:hover .featuredCardIcon {
+  background: var(--red-dim);
+  border-color: rgba(206,31,43,0.3);
+}
+.featuredCardTitle {
+  font-size: 1.4rem; margin-bottom: 0.9rem; color: var(--text);
+}
+.featuredCardDesc {
+  font-size: 0.9rem; line-height: 1.78; color: var(--text-dim);
+}
+
+/* ─── FAQ ─── */
+.faq {
+  padding: 9rem 0;
+  background: var(--bg);
+}
+.faqInner {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 7rem;
+  align-items: start;
+}
+.faqTitle {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  margin-top: 1.25rem; margin-bottom: 1.25rem;
+  line-height: 1.05;
+}
+.faqSub {
+  font-size: 0.92rem; line-height: 1.82; color: var(--text-dim);
+}
+
+/* Accordion */
+.faqRight {
+  display: flex; flex-direction: column; gap: 0;
+}
+.faqItem {
+  border-bottom: 1px solid var(--border);
+}
+.faqItem:first-child { border-top: 1px solid var(--border); }
+
+.faqQuestion {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-dim);
+  text-align: left;
+  transition: color 0.25s;
+}
+.faqQuestion:hover { color: var(--text); }
+.faqItemOpen .faqQuestion { color: var(--red); }
+
+.faqChevron {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--text-muted);
+}
+.faqItemOpen .faqChevron {
+  transform: rotate(180deg);
+  color: var(--red);
+}
+
+.faqAnswer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.faqItemOpen .faqAnswer {
+  grid-template-rows: 1fr;
+}
+.faqAnswer p {
+  overflow: hidden;
+  font-size: 0.91rem; line-height: 1.8;
+  color: var(--text-dim);
+  padding-bottom: 1.4rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1000px) {
+  .serviceRow { gap: 4rem; }
+}
+@media (max-width: 860px) {
+  .serviceRow { grid-template-columns: 1fr; gap: 2.5rem; }
+  .serviceRowAlt { direction: ltr; }
+  .serviceRowImg { height: 300px; }
+  .faqInner { grid-template-columns: 1fr; gap: 4rem; }
+  .featuredGrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .serviceRowImg { height: 240px; }
+}

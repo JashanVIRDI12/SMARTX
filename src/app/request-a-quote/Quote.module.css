@@ -1,0 +1,197 @@
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  height: 40vh;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/warehouse.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,1) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  padding-top: 80px;
+}
+
+.title {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--primary-red);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.formSection {
+  background-color: var(--dark-bg);
+}
+
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.formInfo {
+  position: sticky;
+  top: 120px;
+}
+
+.formInfo h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  height: 4px;
+  width: 60px;
+  background-color: var(--primary-red);
+  border-radius: 2px;
+  margin-bottom: 2rem;
+}
+
+.formInfo p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.infoHighlight {
+  background: rgba(198,0,0,0.1);
+  border-left: 4px solid var(--primary-red);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.infoHighlight p {
+  margin: 0;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.formCard {
+  padding: 3rem;
+  border-radius: 16px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroupFull {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-light);
+}
+
+.input, .textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 1rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  background: rgba(255,255,255,0.08);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+select.input option {
+  background-color: var(--dark-surface);
+  color: white;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 968px) {
+  .formContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .formInfo {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formGroupFull {
+    grid-column: span 1;
+  }
+}

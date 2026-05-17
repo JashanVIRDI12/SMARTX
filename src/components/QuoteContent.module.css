@@ -1,0 +1,128 @@
+/* ─── Hero ─── */
+.hero {
+  position: relative; min-height: 52vh;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.heroBg { position: absolute; inset: 0; }
+.heroBgImg {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  filter: brightness(0.28) saturate(0.5);
+}
+.heroBgOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(7,7,8,0.98) 0%, rgba(7,7,8,0.3) 100%);
+}
+.heroInner {
+  position: relative; z-index: 10;
+  padding: 5rem 2rem; display: flex; flex-direction: column;
+}
+.titleLine { overflow: hidden; }
+.heroTitle {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  line-height: 0.9; color: var(--text);
+  will-change: transform;
+}
+.heroTitleRed { color: var(--red); }
+.heroSub {
+  font-size: 1rem; color: rgba(237,232,226,0.5);
+  margin-top: 1.25rem;
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+}
+
+/* ─── Form Section ─── */
+.formSection {
+  padding: 9rem 0;
+  background: var(--bg);
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 7rem;
+  align-items: start;
+}
+
+/* Info Col */
+.infoCol {}
+.infoTitle {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  margin-top: 1.25rem; margin-bottom: 1.5rem;
+  line-height: 1.05;
+}
+.infoBody {
+  font-size: 0.92rem; line-height: 1.8;
+  color: var(--text-dim); margin-bottom: 2.5rem;
+}
+
+/* Trust */
+.trust {
+  display: flex; flex-direction: column; gap: 0;
+  margin-bottom: 2.5rem;
+}
+.trustItem {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem; color: var(--text-dim);
+}
+.trustItem:first-child { border-top: 1px solid var(--border); }
+.trustIcon { color: var(--red); flex-shrink: 0; }
+
+/* Contact Quick */
+.contactQuick {
+  padding: 1.5rem;
+  border: 1px solid var(--border-md);
+  background: var(--surface);
+}
+.contactQuickLabel {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.4rem;
+}
+.contactQuickPhone {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.8rem; font-weight: 900;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.contactQuickPhone:hover { color: var(--red); }
+
+/* Form Col */
+.formCol {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.formHeader {
+  padding: 2.5rem 3rem;
+  border-bottom: 1px solid var(--border);
+}
+.formTitle {
+  font-size: 1.8rem; color: var(--text); margin-bottom: 0.4rem;
+}
+.formSubtitle {
+  font-size: 0.88rem; color: var(--text-dim);
+}
+.form {
+  padding: 2.5rem 3rem;
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.formRow {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+}
+.formGroup { display: flex; flex-direction: column; }
+.textarea { resize: vertical; min-height: 110px; }
+.submitBtn {
+  width: 100%; justify-content: center;
+  padding: 1.1rem;
+  font-size: 1.05rem;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .formGrid { grid-template-columns: 1fr; gap: 4rem; }
+}
+@media (max-width: 600px) {
+  .formRow { grid-template-columns: 1fr; }
+  .form { padding: 2rem 1.5rem; }
+  .formHeader { padding: 2rem 1.5rem; }
+}

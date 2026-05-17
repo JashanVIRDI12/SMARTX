@@ -1,0 +1,200 @@
+.page {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  height: 40vh;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/hero_truck.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,1) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  padding-top: 80px;
+}
+
+.title {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--primary-red);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.servicesList {
+  background-color: var(--dark-bg);
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.serviceRowReverse {
+  direction: rtl;
+}
+
+.serviceRowReverse > * {
+  direction: ltr;
+}
+
+.serviceImageWrapper {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  height: 400px;
+  position: relative;
+}
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.serviceImageWrapper:hover .serviceImage {
+  transform: scale(1.05);
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-red);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+  box-shadow: 0 10px 20px rgba(198,0,0,0.3);
+}
+
+.serviceText h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.serviceText p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.capabilitiesSection {
+  background-color: var(--dark-surface);
+  border-top: 1px solid var(--glass-border);
+}
+
+.capHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.capHeader h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  height: 4px;
+  width: 60px;
+  background-color: var(--primary-red);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.capGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.capCard {
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.capCard:hover {
+  transform: translateY(-10px);
+}
+
+.capIcon {
+  color: var(--primary-red);
+  margin-bottom: 1.5rem;
+}
+
+.capCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.capCard p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .serviceRow {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  
+  .serviceRowReverse {
+    direction: ltr;
+  }
+}

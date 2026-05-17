@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+:root {
+  --bg: #070708;
+  --surface: #0d0d0f;
+  --surface-2: #141416;
+  --surface-3: #1a1a1d;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-md: rgba(255, 255, 255, 0.1);
+  --border-lg: rgba(255, 255, 255, 0.16);
+
+  --red: #ce1f2b;
+  --red-bright: #e8222f;
+  --red-dim: rgba(206, 31, 43, 0.12);
+  --red-glow: 0 0 40px rgba(206, 31, 43, 0.25);
+
+  --amber: #e87020;
+  --gold: #c4973e;
+
+  --text: #ede8e2;
+  --text-dim: #9e9892;
+  --text-muted: #5e5a56;
+  --text-red: #ce1f2b;
+
+  --header-height: 80px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ─── Layout ──────────────────────────────────────────── */
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.container-wide {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-pad {
+  padding: 9rem 0;
+}
+
+/* ─── Typography Utils ─────────────────────────────────── */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.stat-num {
+  font-family: 'Bebas Neue', cursive;
+  line-height: 1;
+}
+
+/* ─── Buttons ──────────────────────────────────────────── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--red);
+  color: #fff;
+  padding: 0.9rem 2.4rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--red-bright);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(206, 31, 43, 0.38);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  color: var(--text);
+  padding: 0.9rem 2.4rem;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-md);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  border-color: var(--border-lg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ─── Divider ──────────────────────────────────────────── */
+
+.h-line {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--red);
+  margin: 1.25rem 0;
+}
+
+/* ─── Glass Panel ──────────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+/* ─── Page wrapper padding ─────────────────────────────── */
+
+.page-wrap {
+  padding-top: var(--header-height);
+}
+
+/* ─── Input / Textarea ─────────────────────────────────── */
+
+.field-input {
+  width: 100%;
+  background: var(--surface-3);
+  border: 1px solid var(--border-md);
+  color: var(--text);
+  padding: 0.9rem 1.2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease;
+  outline: none;
+  appearance: none;
+}
+
+.field-input::placeholder {
+  color: var(--text-muted);
+}
+
+.field-input:focus {
+  border-color: var(--red);
+}
+
+.field-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
