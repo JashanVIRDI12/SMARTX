@@ -226,12 +226,40 @@
 @media (max-width: 1100px) {
   .pillarsGrid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 860px) {
-  .introInner { grid-template-columns: 1fr; gap: 3.5rem; }
-  .checklistInner { grid-template-columns: 1fr; gap: 3.5rem; }
-  .tipsGrid { grid-template-columns: 1fr; }
-  .ctaInner { flex-direction: column; align-items: flex-start; }
+
+@media (max-width: 900px) {
+  .intro, .pillars, .checklist, .tips { padding: 6rem 0; }
+  .cta                                { padding: 5rem 0; }
+
+  .introInner                         { grid-template-columns: 1fr; gap: 3rem; }
+  .checklistInner                     { grid-template-columns: 1fr; gap: 3rem; }
+
+  .tipsGrid                           { grid-template-columns: 1fr; }
+  .ctaInner                           { flex-direction: column; align-items: flex-start; gap: 2rem; }
 }
+
+@media (max-width: 768px) {
+  .heroInner                          { padding: 4rem 1.25rem; }
+  .heroSub                            { font-size: 0.9rem; }
+
+  .bannerContent                      { padding: 4rem 1.25rem; }
+  .banner                             { min-height: 320px; }
+
+  .pillarCard                         { padding: 2rem 1.5rem; }
+  .tipCard                            { padding: 2rem 1.5rem; }
+  .tipCardIcon, .pillarIcon           { width: 48px; height: 48px; }
+
+  .introBadge                         { padding: 1.25rem; }
+  .introImg                           { height: 220px; }
+}
+
 @media (max-width: 600px) {
-  .pillarsGrid { grid-template-columns: 1fr; }
+  .intro, .pillars, .checklist, .tips { padding: 4.5rem 0; }
+  .cta                                { padding: 4rem 0; }
+
+  .pillarsGrid                        { grid-template-columns: 1fr; }
+
+  .checklistItem                      { padding: 1.25rem 0; font-size: 0.88rem; }
+  .ctaBtns                            { flex-direction: column; width: 100%; }
+  .ctaBtns a, .ctaBtns button        { width: 100%; justify-content: center; }
 }

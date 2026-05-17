@@ -119,10 +119,27 @@
 
 /* Responsive */
 @media (max-width: 1100px) {
-  .formGrid { grid-template-columns: 1fr; gap: 4rem; }
+  .formGrid         { grid-template-columns: 1fr; gap: 4rem; }
 }
+
+@media (max-width: 768px) {
+  .heroInner        { padding: 4rem 1.25rem; }
+  .heroSub          { font-size: 0.9rem; }
+
+  .formSection      { padding: 6rem 0; }
+  .formHeader       { padding: 2rem 2rem; }
+  .form             { padding: 2rem 2rem; }
+
+  .infoTitle        { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+}
+
 @media (max-width: 600px) {
-  .formRow { grid-template-columns: 1fr; }
-  .form { padding: 2rem 1.5rem; }
-  .formHeader { padding: 2rem 1.5rem; }
+  .formSection      { padding: 4.5rem 0; }
+  .formRow          { grid-template-columns: 1fr; }
+  .form             { padding: 1.75rem 1.25rem; gap: 1rem; }
+  .formHeader       { padding: 1.75rem 1.25rem; }
+  .formTitle        { font-size: 1.5rem; }
+  .formGrid         { gap: 3rem; }
+  .contactQuick     { padding: 1.25rem; }
+  .contactQuickPhone { font-size: 1.5rem; }
 }

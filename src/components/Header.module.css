@@ -1,16 +1,15 @@
+/* ─── Header bar ─── */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   height: var(--header-height);
-  transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
   border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .header.scrolled {
-  background: rgba(7, 7, 8, 0.92);
+  background: rgba(7, 7, 8, 0.94);
   border-bottom-color: var(--border);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -20,48 +19,48 @@
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
-/* Logo */
+/* ─── Logo ─── */
 .logo {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  margin-right: auto;
 }
 
 .logoImg {
-  height: 44px;
+  height: 42px;
   width: auto;
   object-fit: contain;
 }
 
-/* Nav */
-.nav {
+/* ─── Desktop nav ─── */
+.desktopNav {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  margin-left: auto;
+  gap: 0.15rem;
 }
 
-.navLink {
+.link {
   position: relative;
-  padding: 0.5rem 0.85rem;
+  padding: 0.5rem 0.9rem;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-dim);
-  transition: color 0.25s ease;
+  transition: color 0.25s;
+  white-space: nowrap;
 }
 
-.navLink::after {
+.link::after {
   content: '';
   position: absolute;
   bottom: 2px;
-  left: 0.85rem;
-  right: 0.85rem;
+  left: 0.9rem; right: 0.9rem;
   height: 2px;
   background: var(--red);
   transform: scaleX(0);
@@ -69,26 +68,17 @@
   transition: transform 0.3s ease;
 }
 
-.navLink:hover {
-  color: var(--text);
-}
+.link:hover { color: var(--text); }
+.link:hover::after { transform: scaleX(1); }
+.linkActive { color: var(--text); }
+.linkActive::after { transform: scaleX(1); }
 
-.navLink:hover::after,
-.navLink.active::after {
-  transform: scaleX(1);
-}
-
-.navLink.active {
-  color: var(--text);
-}
-
-/* Call Button */
+/* ─── Call button (desktop) ─── */
 .callBtn {
-  flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.3rem;
+  padding: 0.55rem 1.25rem;
   background: var(--red);
   color: #fff;
   font-family: 'Barlow Condensed', sans-serif;
@@ -96,71 +86,190 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
   clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
-  transition: background 0.25s ease;
+  transition: background 0.25s;
 }
 
-.callBtn:hover {
-  background: var(--red-bright);
-  color: #fff;
-}
+.callBtn:hover { background: var(--red-bright); color: #fff; }
 
-/* Burger */
+/* ─── Burger (mobile only) ─── */
 .burger {
   display: none;
   align-items: center;
   justify-content: center;
+  width: 42px; height: 42px;
+  flex-shrink: 0;
   color: var(--text);
-  padding: 0.4rem;
-  margin-left: auto;
+  border: 1px solid var(--border-md);
   cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
-/* Responsive */
+.burger:hover {
+  border-color: var(--red);
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+/* ─── Mobile menu overlay ─── */
+/*
+  position: fixed on a sibling of <header> — NOT a child.
+  This avoids the CSS transform stacking-context trap that comes from
+  GSAP animating the header with yPercent (which sets transform on the header).
+  If the menu were inside <header>, its position:fixed would be relative
+  to the transformed parent, not the viewport — so it would be stuck in 80px.
+*/
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 99; /* below header (z-index 100) */
+  background: #070708;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--header-height);
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.77, 0, 0.175, 1);
+  overflow-y: auto;
+  /* Only shown on mobile — hidden entirely on desktop */
+  visibility: hidden;
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* ─── Mobile nav links ─── */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  color: var(--text-dim);
+  transition: background 0.18s, color 0.18s, border-left-color 0.18s;
+}
+
+.mobileLink:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.mobileLink:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.mobileLinkActive {
+  color: var(--text);
+  background: rgba(206, 31, 43, 0.06);
+  border-left-color: var(--red);
+}
+
+.mobileNum {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  opacity: 0.65;
+  flex-shrink: 0;
+  width: 22px;
+}
+
+.mobileLabel {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.mobileDash {
+  width: 20px;
+  height: 2px;
+  background: var(--border-md);
+  flex-shrink: 0;
+  transition: background 0.2s, width 0.2s;
+}
+
+.mobileLink:hover .mobileDash,
+.mobileLinkActive .mobileDash {
+  background: var(--red);
+  width: 28px;
+}
+
+/* ─── Mobile footer CTA ─── */
+.mobileCta {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.mobilePhone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border-md);
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.mobilePhone:hover {
+  border-color: var(--red);
+  background: var(--red-dim);
+}
+
+.mobilePhone svg {
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+.mobilePhoneLabel {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.mobilePhoneNum {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+/* ─── Responsive breakpoints ─── */
 @media (max-width: 900px) {
-  .nav {
-    position: fixed;
-    inset: var(--header-height) 0 0 0;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0;
-    background: rgba(7, 7, 8, 0.98);
-    backdrop-filter: blur(24px);
-    padding: 2rem;
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
-    margin-left: 0;
-    overflow-y: auto;
-  }
-
-  .nav.navOpen {
-    transform: translateX(0);
-  }
-
-  .navLink {
-    width: 100%;
-    font-size: 2.2rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-  }
-
-  .navLink::after {
-    display: none;
-  }
-
-  .callBtn {
-    display: none;
-  }
-
-  .burger {
-    display: flex;
-  }
+  .desktopNav { display: none; }
+  .callBtn    { display: none; }
+  .burger     { display: flex; }
+  /* logo no longer has margin-right: auto since burger takes the right slot */
+  .logo       { margin-right: auto; }
 }
 
 @media (max-width: 480px) {
-  .logoImg {
-    height: 36px;
-  }
+  .logoImg          { height: 36px; }
+  .mobileLabel      { font-size: 1.7rem; }
+  .mobileLink       { padding: 1.1rem 1.25rem; }
+  .mobileCta        { padding: 1.25rem; }
 }

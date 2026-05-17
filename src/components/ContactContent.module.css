@@ -118,8 +118,23 @@ a.contactItemValue:hover { color: var(--red); }
 
 /* Responsive */
 @media (max-width: 960px) {
-  .contactGrid { grid-template-columns: 1fr; gap: 4rem; }
+  .contactGrid    { grid-template-columns: 1fr; gap: 4rem; }
 }
+
+@media (max-width: 768px) {
+  .heroInner      { padding: 4rem 1.25rem; }
+  .heroSub        { font-size: 0.9rem; }
+
+  .contactSection { padding: 6rem 0; }
+  .formCol        { padding: 2.5rem 2rem; }
+  .infoDesc       { margin-bottom: 2rem; }
+
+  .mapStrip       { flex-direction: column; text-align: center; padding: 2rem 1.25rem; gap: 0.6rem; }
+}
+
 @media (max-width: 600px) {
-  .formCol { padding: 2rem 1.5rem; }
+  .contactSection { padding: 4.5rem 0; }
+  .formCol        { padding: 2rem 1.25rem; }
+  .formTitle      { font-size: 1.5rem; }
+  .contactGrid    { gap: 3rem; }
 }

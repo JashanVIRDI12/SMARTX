@@ -815,6 +815,7 @@
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
+
 @media (max-width: 1100px) {
   .whatWeDoInner,
   .whoWeAreInner,
@@ -823,18 +824,87 @@
 }
 
 @media (max-width: 900px) {
-  .servicePreviewGrid { grid-template-columns: 1fr; }
-  .whatWeDoInner { grid-template-columns: 1fr; }
-  .whoWeAreInner { grid-template-columns: 1fr; }
-  .affiliationsInner { grid-template-columns: 1fr; }
-  .safetyBannerInner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .capGrid { grid-template-columns: repeat(2, 1fr); }
+  /* section padding */
+  .servicePreview,
+  .whatWeDo,
+  .whoWeAre,
+  .affiliations,
+  .safetyBanner,
+  .capabilities,
+  .parallaxSection { padding: 6rem 0; }
+
+  .servicePreviewGrid         { grid-template-columns: 1fr; }
+  .whatWeDoInner              { grid-template-columns: 1fr; }
+  .whoWeAreInner              { grid-template-columns: 1fr; }
+  .affiliationsInner          { grid-template-columns: 1fr; }
+  .safetyBannerInner          { grid-template-columns: 1fr; gap: 2rem; }
+  .capGrid                    { grid-template-columns: repeat(2, 1fr); }
+
+  .whatWeDoImg                { height: 300px; }
+  .affiliationsCallout        { flex-direction: row; gap: 1.5rem; }
+  .affiliationsImg            { flex: 1; min-width: 0; }
+  .calloutBox                 { flex: 1; min-width: 0; }
+}
+
+@media (max-width: 768px) {
+  /* hero */
+  .hero                       { min-height: 65vh; }
+  .heroInner                  { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .heroDesc                   { font-size: 0.92rem; }
+  .heroScrollHint             { display: none; }
+
+  /* ticker */
+  .ticker                     { padding: 0.75rem 0; }
+
+  /* service cards */
+  .spCardImg                  { height: 200px; }
+
+  /* who we are */
+  .whoWeAreImages             { grid-template-columns: 1fr; }
+  .whoWeAreImgMain            { height: 220px; }
+
+  /* affiliations */
+  .affiliationsCallout        { flex-direction: column; }
+  .affiliationsImg            { height: 160px; }
+
+  /* safety banner */
+  .safetyBannerRight          { gap: 1rem; }
+
+  /* capabilities */
+  .capGrid                    { grid-template-columns: 1fr; }
+  .capCard                    { padding: 2rem 1.5rem; }
+
+  /* parallax */
+  .parallaxContent            { padding: 5rem 1.25rem; }
+  .parallaxTitle              { font-size: clamp(2.4rem, 7vw, 3.5rem); }
 }
 
 @media (max-width: 600px) {
-  .heroWord { font-size: clamp(2.6rem, 12vw, 3.8rem); }
-  .heroCtas { flex-direction: column; }
-  .capGrid { grid-template-columns: 1fr; }
-  .whoWeAreImages { grid-template-columns: 1fr; }
-  .whoWeAreImgSide { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .heroWord                   { font-size: clamp(2.4rem, 11.5vw, 3.5rem); }
+  .heroCtas                   { flex-direction: column; align-items: flex-start; }
+
+  .servicePreview,
+  .whatWeDo,
+  .whoWeAre,
+  .affiliations,
+  .safetyBanner,
+  .capabilities,
+  .parallaxSection            { padding: 4.5rem 0; }
+
+  .servicePreviewHeader,
+  .capHeader,
+  .featuresHeader             { margin-bottom: 2rem; }
+
+  .whoWeAreImgSide            { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+  .affiliationsBars           { margin-top: 1.5rem; gap: 1.25rem; }
+
+  .safetyBannerInner          { gap: 1.5rem; }
+  .safetyBannerRight a        { width: 100%; justify-content: center; }
+
+  .calloutBox                 { padding: 1.5rem; }
+  .calloutPhone               { font-size: 1.8rem; }
+
+  .whatWeDoImgBadge           { padding: 0.6rem 1rem; }
+  .whatWeDoImgBadgeNum        { font-size: 1.5rem; }
 }

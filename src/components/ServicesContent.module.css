@@ -226,13 +226,39 @@
 @media (max-width: 1000px) {
   .serviceRow { gap: 4rem; }
 }
+
 @media (max-width: 860px) {
-  .serviceRow { grid-template-columns: 1fr; gap: 2.5rem; }
-  .serviceRowAlt { direction: ltr; }
-  .serviceRowImg { height: 300px; }
-  .faqInner { grid-template-columns: 1fr; gap: 4rem; }
-  .featuredGrid { grid-template-columns: 1fr; }
+  .servicesList              { padding: 5rem 0; }
+  .featured, .faq            { padding: 6rem 0; }
+
+  .serviceRow                { grid-template-columns: 1fr; gap: 2rem; padding: 3.5rem 0; }
+  .serviceRowAlt             { direction: ltr; }
+  .serviceRowImg             { height: 280px; }
+
+  .faqInner                  { grid-template-columns: 1fr; gap: 3.5rem; }
+  .featuredGrid              { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 768px) {
+  .heroInner                 { padding: 4rem 1.25rem; }
+  .heroSub                   { font-size: 0.9rem; }
+
+  .serviceRow                { padding: 3rem 0; }
+  .serviceRowImg             { height: 240px; }
+  .serviceRowImgNum          { font-size: 3rem; }
+
+  .featuredCard              { padding: 2rem 1.5rem; }
+  .featuredCardIcon          { width: 50px; height: 50px; }
+
+  .faqQuestion               { font-size: 0.9rem; padding: 1.2rem 0; }
+}
+
 @media (max-width: 600px) {
-  .serviceRowImg { height: 240px; }
+  .servicesList              { padding: 4rem 0; }
+  .featured, .faq            { padding: 4.5rem 0; }
+
+  .serviceRow                { padding: 2.5rem 0; gap: 1.5rem; }
+  .serviceRowImg             { height: 200px; }
+  .serviceRowBody            { font-size: 0.9rem; }
+  .serviceRowTitle           { font-size: clamp(1.5rem, 5vw, 2rem); }
 }
