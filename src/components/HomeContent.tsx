@@ -310,7 +310,7 @@ export default function HomeContent() {
 
           <div className={styles.whoWeAreImages}>
             <div className={`${styles.whoWeAreImgMain} js-img-reveal`}>
-              <img src="/city_truck.png" alt="Smart X fleet" />
+              <img src="/fleet_driving.png" alt="Smart X fleet" />
             </div>
             <div className={styles.whoWeAreImgSide}>
               <div className={`${styles.whoWeAreImgSmall} js-img-reveal`}>

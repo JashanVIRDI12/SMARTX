@@ -181,7 +181,7 @@ export default function AboutContent() {
 
           <div className={styles.introImages}>
             <div className={`${styles.introImgMain} js-img-reveal`}>
-              <img src="/city_truck.png" alt="Smart X truck" />
+              <img src="/fleet_driving.png" alt="Smart X truck" />
             </div>
             <div className={`${styles.introImgSub} js-img-reveal`}>
               <img src="/tech_logistics.png" alt="Logistics technology" />

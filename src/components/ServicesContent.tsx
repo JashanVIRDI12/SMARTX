@@ -34,7 +34,7 @@ const SERVICES = [
     num: '03',
     icon: Truck,
     title: 'Tri-Axle Service',
-    img: '/city_truck.png',
+    img: '/fleet_parked.png',
     body: 'Smart X has a fleet of tri-axle units. Most of these units are refrigerated trailers, and half of those units are dual temperature trailers. Although many of our customers use our services for temperature-controlled shipments, many others choose SmartX Logistics for dry shipments, taking advantage of our capacity to move heavier loads.',
   },
   {

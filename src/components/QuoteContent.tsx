@@ -55,7 +55,7 @@ export default function QuoteContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/city_truck.png" alt="" className={styles.heroBgImg} />
+          <img src="/fleet_driving.png" alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
