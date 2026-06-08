@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "hero:frames": "mkdir -p public/hero-sequence && ffmpeg -y -i public/hf_20260607_173704_311ea426-af4e-4f46-b163-0ddbb3ea95d2.mp4 -vf \"fps=60,scale=1600:-2\" -q:v 3 public/hero-sequence/frame_%05d.jpg"
   },
   "dependencies": {
     "gsap": "^3.15.0",

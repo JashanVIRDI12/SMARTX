@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,6 +8,8 @@ import {
   ArrowRight, Truck, Globe, PackageOpen,
   Navigation, DollarSign, ShieldCheck, CreditCard, LifeBuoy, Scale, Phone,
 } from 'lucide-react';
+import HeroScrollSequence from './HeroScrollSequence';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './HomeContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +21,7 @@ const SERVICES = [
     title: 'Dryvans & Reefer Units',
     brief: 'Are you interested in working with a professional Trucking Company?',
     desc: 'We supply all the equipment and skills necessary to tackle just about every type of job our clients have for us, no matter how big or small it may be. We\'re committed to providing consistently reliable service in a timely and professional manner.',
-    img: '/hero_truck.png',
+    img: SITE_IMAGES.fleetDawn,
   },
   {
     num: '02',
@@ -27,7 +29,7 @@ const SERVICES = [
     title: 'Regional and Long Haul',
     brief: 'Get the results you deserve with this quality service, and at an affordable price too!',
     desc: 'Our qualified team of professionals bring their experience and know-how with them on every job. What really sets our services apart is our attention to detail and receptiveness to the unique needs of each client.',
-    img: '/fleet_driving.png',
+    img: SITE_IMAGES.highway,
   },
   {
     num: '03',
@@ -35,7 +37,7 @@ const SERVICES = [
     title: 'Warehousing',
     brief: 'Get this service done quickly and efficiently by the experts here at Smart X Logistics.',
     desc: 'We understand how important it is to feel confident and worry-free when it comes to storage. Our dedicated staff invests the time and energy necessary to be well prepared for any unique requests or special concerns.',
-    img: '/warehouse.png',
+    img: SITE_IMAGES.warehouse,
   },
 ];
 
@@ -57,33 +59,15 @@ const CAPABILITIES = [
 ];
 
 export default function HomeContent() {
+  const rootRef = useRef<HTMLDivElement>(null);
   const tickerInnerRef = useRef<HTMLDivElement>(null);
   const parallaxImgRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
 
-      /* ─── Hero entrance ─── */
-      gsap.fromTo('.js-hero-line',
-        { yPercent: 110, opacity: 0 },
-        { yPercent: 0, opacity: 1, duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: 0.4 }
-      );
-      gsap.fromTo('.js-hero-badge',
-        { opacity: 0, y: -16 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 0.3 }
-      );
-      gsap.fromTo('.js-hero-sub',
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 1.0 }
-      );
-      gsap.fromTo('.js-hero-cta',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', stagger: 0.12, delay: 1.15 }
-      );
-      gsap.fromTo('.js-hero-accent',
-        { scaleX: 0 },
-        { scaleX: 1, duration: 1.2, ease: 'power4.inOut', delay: 0.8 }
-      );
+    const ctx = gsap.context(() => {
 
       /* ─── Ticker ─── */
       if (tickerInnerRef.current) {
@@ -148,63 +132,14 @@ export default function HomeContent() {
         });
       }
 
-    });
+    }, root);
     return () => ctx.revert();
   }, []);
 
   return (
-    <>
-      {/* ══════════════════════ HERO ══════════════════════════ */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
-          <img src="/hero_truck.png" alt="Smart X Logistics fleet" className={styles.heroBgImg} />
-          <div className={styles.heroBgOverlay} />
-        </div>
-
-        <div className={`container ${styles.heroInner}`}>
-          <div className={styles.heroContent}>
-            <div className={`js-hero-badge ${styles.heroEyebrow}`}>
-              <span className={styles.heroPulse} />
-              <span>Live · 24/7 Network Operations</span>
-            </div>
-
-            <div className={styles.heroTitleWrap}>
-              <div className={styles.titleLine}>
-                <span className={`js-hero-line ${styles.heroWord}`}>Secure &amp;</span>
-              </div>
-              <div className={styles.titleLine}>
-                <span className={`js-hero-line ${styles.heroWord}`}>Reliable</span>
-              </div>
-              <div className={styles.titleLine}>
-                <span className={`js-hero-line ${styles.heroWord} ${styles.heroWordRed}`}>Shipping</span>
-              </div>
-              <div className={styles.titleLine}>
-                <span className={`js-hero-line ${styles.heroWord}`}>Around the World</span>
-              </div>
-            </div>
-
-            <div className={`js-hero-accent ${styles.heroAccentLine}`} />
-
-            <p className={`js-hero-sub ${styles.heroDesc}`}>
-              100% fastest logistic transport solution — Smart X Logistics blends elite vehicles with cutting-edge technology to deliver your cargo safely, on time, every time.
-            </p>
-
-            <div className={styles.heroCtas}>
-              <Link href="/request-a-quote" className={`btn-primary js-hero-cta`}>
-                Request a Quote <ArrowRight size={17} />
-              </Link>
-              <Link href="/our-services" className={`btn-outline js-hero-cta`}>
-                Our Services
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.heroScrollHint}>
-          <span>Scroll</span>
-          <div className={styles.heroScrollLine} />
-        </div>
-      </section>
+    <div ref={rootRef}>
+      {/* ══════════════════════ HERO SEQUENCE ═════════════════ */}
+      <HeroScrollSequence />
 
       {/* ══════════════════════ TICKER ════════════════════════ */}
       <div className={styles.ticker}>
@@ -259,7 +194,7 @@ export default function HomeContent() {
       <section className={styles.whatWeDo}>
         <div className={`container ${styles.whatWeDoInner}`}>
           <div className={`${styles.whatWeDoImg} js-img-reveal`}>
-            <img src="/hero_truck.png" alt="Dryvans and Reefer Units" />
+            <img src={SITE_IMAGES.fleetDawn} alt="Dryvans and Reefer Units" />
             <div className={styles.whatWeDoImgBadge}>
               <span className={styles.whatWeDoImgBadgeNum}>01</span>
               <span className={styles.whatWeDoImgBadgeLabel}>Featured Service</span>
@@ -310,11 +245,11 @@ export default function HomeContent() {
 
           <div className={styles.whoWeAreImages}>
             <div className={`${styles.whoWeAreImgMain} js-img-reveal`}>
-              <img src="/fleet_driving.png" alt="Smart X fleet" />
+              <img src={SITE_IMAGES.highway} alt="Smart X fleet" />
             </div>
             <div className={styles.whoWeAreImgSide}>
               <div className={`${styles.whoWeAreImgSmall} js-img-reveal`}>
-                <img src="/aerial_fleet.png" alt="Aerial fleet view" />
+                <img src={SITE_IMAGES.aerial} alt="Aerial fleet view" />
               </div>
               <div className={styles.whoWeAreCard}>
                 <div className={`stat-num ${styles.whoWeAreCardNum}`}>15+</div>
@@ -371,7 +306,7 @@ export default function HomeContent() {
               </Link>
             </div>
             <div className={`${styles.affiliationsImg} js-img-reveal`}>
-              <img src="/tech_logistics.png" alt="Logistics technology" />
+              <img src={SITE_IMAGES.wireframe} alt="Logistics technology" />
             </div>
           </div>
         </div>
@@ -417,7 +352,7 @@ export default function HomeContent() {
       {/* ══════════════════ PARALLAX CTA ═════════════════════ */}
       <section className={styles.parallaxSection}>
         <div ref={parallaxImgRef} className={styles.parallaxBg}>
-          <img src="/fleet_parked.png" alt="" />
+          <img src={SITE_IMAGES.fleetDawn} alt="" />
         </div>
         <div className={styles.parallaxOverlay} />
         <div className={`container ${styles.parallaxContent}`}>
@@ -435,6 +370,6 @@ export default function HomeContent() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

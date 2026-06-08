@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './ContactContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,7 +51,7 @@ export default function ContactContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/warehouse.png" alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.warehouse} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>

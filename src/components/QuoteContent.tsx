@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Send, CheckCircle, Clock, Shield, Users } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './QuoteContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,7 +56,7 @@ export default function QuoteContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/fleet_driving.png" alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.highway} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>

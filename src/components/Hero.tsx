@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroBackground}>
-        <img src="/hero_truck.png" alt="Logistics Truck" className={styles.bgImage} />
+        <img src={SITE_IMAGES.fleetDawn} alt="Logistics Truck" className={styles.bgImage} />
         <div className={styles.overlay}></div>
       </div>
       

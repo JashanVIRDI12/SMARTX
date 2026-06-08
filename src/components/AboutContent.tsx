@@ -8,6 +8,7 @@ import {
   Globe, MapPin, Plane, Ship, Truck, Warehouse,
   ShieldCheck, Users, Zap, ArrowRight, CheckCircle,
 } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './AboutContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -122,7 +123,7 @@ export default function AboutContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/fleet_driving.png" alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.highway} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
@@ -181,10 +182,10 @@ export default function AboutContent() {
 
           <div className={styles.introImages}>
             <div className={`${styles.introImgMain} js-img-reveal`}>
-              <img src="/fleet_driving.png" alt="Smart X truck" />
+              <img src={SITE_IMAGES.highway} alt="Smart X truck" />
             </div>
             <div className={`${styles.introImgSub} js-img-reveal`}>
-              <img src="/tech_logistics.png" alt="Logistics technology" />
+              <img src={SITE_IMAGES.wireframe} alt="Logistics technology" />
             </div>
           </div>
         </div>
@@ -237,7 +238,7 @@ export default function AboutContent() {
 
           <div className={styles.contributeRight}>
             <div className={`${styles.contributeImg} js-img-reveal`}>
-              <img src="/aerial_fleet.png" alt="Fleet overview" />
+              <img src={SITE_IMAGES.aerial} alt="Fleet overview" />
             </div>
             <div className={`${styles.coverageList} js-stagger-group`}>
               {COVERAGE_POINTS.map((point) => (
@@ -297,7 +298,7 @@ export default function AboutContent() {
             </Link>
           </div>
           <div className={`${styles.brandImg} js-img-reveal`}>
-            <img src="/warehouse.png" alt="Smart X warehousing" />
+            <img src={SITE_IMAGES.warehouse} alt="Smart X warehousing" />
           </div>
         </div>
       </section>

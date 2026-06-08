@@ -8,6 +8,7 @@ import {
   ShieldCheck, Navigation, Lock, Activity,
   Truck, Coffee, ArrowRight, CheckCircle,
 } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './SafetyContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -107,7 +108,7 @@ export default function SafetyContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/aerial_fleet.png" alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.aerial} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
@@ -151,7 +152,7 @@ export default function SafetyContent() {
 
           <div className={styles.introSide}>
             <div className={`${styles.introImg} js-img-reveal`}>
-              <img src="/fleet_parked.png" alt="Smart X fleet" />
+              <img src={SITE_IMAGES.fleetDawn} alt="Smart X fleet" />
             </div>
             <div className={`${styles.introBadge} js-badge`}>
               <ShieldCheck size={28} className={styles.introBadgeIcon} />
@@ -217,7 +218,7 @@ export default function SafetyContent() {
       {/* ─── Keep Country Running Banner ─── */}
       <section className={styles.banner}>
         <div className={styles.bannerBg}>
-          <img src="/fleet_driving.png" alt="" />
+          <img src={SITE_IMAGES.highway} alt="" />
           <div className={styles.bannerOverlay} />
         </div>
         <div className={`container ${styles.bannerContent}`}>

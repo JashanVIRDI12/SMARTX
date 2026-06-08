@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollTriggerCleanup from '@/components/ScrollTriggerCleanup';
 
 export const metadata: Metadata = {
   title: 'Smart X Logistics Inc. — North America\'s Premier Transport Partner',
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollTriggerCleanup />
         <Header />
         <main className="page-wrap">{children}</main>
         <Footer />

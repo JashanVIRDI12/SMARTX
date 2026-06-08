@@ -8,6 +8,7 @@ import {
   Thermometer, Package, Truck, Layers, Warehouse,
   DollarSign, Navigation, ShieldCheck, ChevronDown, ArrowRight,
 } from 'lucide-react';
+import { SITE_IMAGES } from '@/lib/siteImages';
 import styles from './ServicesContent.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +19,7 @@ const SERVICES = [
     num: '01',
     icon: Thermometer,
     title: 'Refrigerated Service',
-    img: '/fleet_driving.png',
+    img: SITE_IMAGES.highway,
     body: 'SmartX is a leader in refrigerated trucking services throughout Western Canada. Our experienced drivers, state-of-the-art refrigerated equipment, and temperature monitoring solutions are designed to provide dependable, on-time deliveries throughout the year.',
   },
   {
@@ -26,7 +27,7 @@ const SERVICES = [
     num: '02',
     icon: Package,
     title: 'Dry Service',
-    img: '/hero_truck.png',
+    img: SITE_IMAGES.fleetDawn,
     body: 'SmartX specializes in full truckload transportation within Western Canada (BC, Alberta, Saskatchewan and Manitoba). Although many of our customers use us for temperature-controlled shipments, several companies use us for dry shipments to take advantage of our tri-axle units.',
   },
   {
@@ -34,7 +35,7 @@ const SERVICES = [
     num: '03',
     icon: Truck,
     title: 'Tri-Axle Service',
-    img: '/fleet_parked.png',
+    img: SITE_IMAGES.wireframe,
     body: 'Smart X has a fleet of tri-axle units. Most of these units are refrigerated trailers, and half of those units are dual temperature trailers. Although many of our customers use our services for temperature-controlled shipments, many others choose SmartX Logistics for dry shipments, taking advantage of our capacity to move heavier loads.',
   },
   {
@@ -42,7 +43,7 @@ const SERVICES = [
     num: '04',
     icon: Layers,
     title: 'Multi-Temp Service',
-    img: '/aerial_fleet.png',
+    img: SITE_IMAGES.aerial,
     body: 'Smart X Logistics has built our tri-axle fleet around an equal number of single temperature and multi-temperature trailers. These units provide the unique ability to ship products together, resulting in considerable cost savings year over year. But what really sets our services apart is our attention to detail and receptiveness to the needs of each client.',
   },
   {
@@ -50,7 +51,7 @@ const SERVICES = [
     num: '05',
     icon: Warehouse,
     title: 'Warehousing Service',
-    img: '/warehouse.png',
+    img: SITE_IMAGES.warehouse,
     body: 'Get this service done quickly and efficiently by the experts here at Smart X Logistics. We understand how important it is to feel confident and worry free when it comes to the service we provide. Our dedicated staff invests the time and energy necessary to be well prepared for any unique requests or special concerns our clients may have.',
   },
 ];
@@ -144,7 +145,7 @@ export default function ServicesContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src="/hero_truck.png" alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.fleetDawn} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
