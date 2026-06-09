@@ -14,6 +14,10 @@
   width: 100%;
   height: 100%;
   z-index: 0;
+  /* Force own compositing layer so iOS Safari doesn't clear
+     canvas content when GSAP changes the section to position:fixed */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .overlay {

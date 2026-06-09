@@ -59,7 +59,7 @@ export default function HeroScrollSequence() {
     let mounted = true;
     let preloadTimeout: number | undefined;
 
-    const images = Array.from({ length: HERO_SEQUENCE.frameCount }, (_, i) => {
+    const images = Array.from({ length: HERO_SEQUENCE.frameCount }, () => {
       const img = new Image();
       img.decoding = 'async';
       return img;
@@ -83,10 +83,17 @@ export default function HeroScrollSequence() {
     }
     preloadTimeout = window.setTimeout(preloadAll, 120);
 
+    // ── Canvas sizing ─────────────────────────────────────────────────
+    // Use offsetWidth/offsetHeight which are reliable on mobile.
+    // window.innerWidth/Height as fallback if the section has 0 dims.
+    const getSize = () => ({
+      w: section.offsetWidth || window.innerWidth,
+      h: section.offsetHeight || window.innerHeight,
+    });
+
     const resizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = section.offsetWidth || window.innerWidth;
-      const h = section.offsetHeight || window.innerHeight;
+      const { w, h } = getSize();
       if (!w || !h) return;
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
@@ -98,6 +105,7 @@ export default function HeroScrollSequence() {
       }
     };
 
+    // ── Draw ──────────────────────────────────────────────────────────
     const drawFrame = (frame: number) => {
       loadImage(frame);
       loadImage(Math.min(frame + 1, HERO_SEQUENCE.frameCount - 1));
@@ -106,6 +114,9 @@ export default function HeroScrollSequence() {
       const img = images[frame];
       if (!img?.complete || !img.naturalWidth) {
         if (img && !img.src) loadImage(frame);
+        // Mark the desired frame BEFORE waiting so the check below works
+        // even when drawnFrameRef.current was -1 on the first draw.
+        drawnFrameRef.current = frame;
         img?.addEventListener(
           'load',
           () => {
@@ -116,19 +127,19 @@ export default function HeroScrollSequence() {
         return;
       }
 
-      const width = canvas.offsetWidth || window.innerWidth;
-      const height = canvas.offsetHeight || window.innerHeight;
-      const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
+      const { w, h } = getSize();
+      const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
       const drawW = img.naturalWidth * scale;
       const drawH = img.naturalHeight * scale;
-      const x = (width - drawW) / 2;
-      const y = (height - drawH) / 2;
+      const x = (w - drawW) / 2;
+      const y = (h - drawH) / 2;
 
-      canvasCtx.clearRect(0, 0, width, height);
+      canvasCtx.clearRect(0, 0, w, h);
       canvasCtx.drawImage(img, x, y, drawW, drawH);
       drawnFrameRef.current = frame;
     };
 
+    // ── Text animations ───────────────────────────────────────────────
     const animateSegmentIn = (index: number) => {
       const el = textRefs.current[index];
       if (!el) return;
@@ -232,6 +243,8 @@ export default function HeroScrollSequence() {
       }
     };
 
+    // ── Initial setup ─────────────────────────────────────────────────
+    resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
     const firstImg = images[0];
@@ -241,9 +254,31 @@ export default function HeroScrollSequence() {
       updateTextForProgress(0);
     };
 
+    if (firstImg.complete && firstImg.naturalWidth) {
+      onFirstLoad();
+    } else {
+      firstImg.addEventListener('load', onFirstLoad, { once: true });
+      // Also handle load failure: if error, the image won't fire 'load'
+      firstImg.addEventListener(
+        'error',
+        () => {
+          // Retry once after a short delay
+          const retry = new Image();
+          retry.decoding = 'async';
+          retry.onload = () => {
+            if (!mounted) return;
+            images[0] = retry;
+            imagesRef.current[0] = retry;
+            onFirstLoad();
+          };
+          retry.src = `${HERO_SEQUENCE.path(0)}?r=${Date.now()}`;
+        },
+        { once: true },
+      );
+    }
+
     const scrollEnd = () => `+=${Math.round(window.innerHeight * 4.5)}`;
 
-    let rafId: number;
     const gsapCtx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: section,
@@ -255,6 +290,12 @@ export default function HeroScrollSequence() {
         invalidateOnRefresh: true,
         onRefresh: () => {
           resizeCanvas();
+          // Redraw after GSAP recalculates layout (e.g. after pin applies on iOS)
+          if (drawnFrameRef.current >= 0) {
+            requestAnimationFrame(() => {
+              if (mounted) drawFrame(drawnFrameRef.current);
+            });
+          }
         },
         onUpdate: (self) => {
           const frame = frameFromProgress(self.progress);
@@ -267,22 +308,9 @@ export default function HeroScrollSequence() {
       });
     }, section);
 
-    rafId = requestAnimationFrame(() => {
-      if (!mounted) return;
-      resizeCanvas();
-      if (firstImg.complete && firstImg.naturalWidth) {
-        onFirstLoad();
-      } else {
-        firstImg.addEventListener('load', onFirstLoad, { once: true });
-        if (!firstImg.src) loadImage(0);
-      }
-      ScrollTrigger.refresh();
-    });
-
     return () => {
       mounted = false;
       if (preloadTimeout) window.clearTimeout(preloadTimeout);
-      cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resizeCanvas);
       gsapCtx.revert();
     };
