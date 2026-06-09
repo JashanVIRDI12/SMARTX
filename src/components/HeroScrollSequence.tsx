@@ -85,11 +85,13 @@ export default function HeroScrollSequence() {
 
     const resizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const { width, height } = section.getBoundingClientRect();
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
+      const w = section.offsetWidth || window.innerWidth;
+      const h = section.offsetHeight || window.innerHeight;
+      if (!w || !h) return;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
       canvasCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
       if (drawnFrameRef.current >= 0) {
         drawFrame(drawnFrameRef.current);
@@ -114,7 +116,8 @@ export default function HeroScrollSequence() {
         return;
       }
 
-      const { width, height } = section.getBoundingClientRect();
+      const width = canvas.offsetWidth || window.innerWidth;
+      const height = canvas.offsetHeight || window.innerHeight;
       const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
       const drawW = img.naturalWidth * scale;
       const drawH = img.naturalHeight * scale;
@@ -229,7 +232,6 @@ export default function HeroScrollSequence() {
       }
     };
 
-    resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
     const firstImg = images[0];
@@ -239,11 +241,9 @@ export default function HeroScrollSequence() {
       updateTextForProgress(0);
     };
 
-    if (firstImg.complete) onFirstLoad();
-    else firstImg.addEventListener('load', onFirstLoad, { once: true });
-
     const scrollEnd = () => `+=${Math.round(window.innerHeight * 4.5)}`;
 
+    let rafId: number;
     const gsapCtx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: section,
@@ -252,6 +252,10 @@ export default function HeroScrollSequence() {
         pin: true,
         scrub: 0.6,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onRefresh: () => {
+          resizeCanvas();
+        },
         onUpdate: (self) => {
           const frame = frameFromProgress(self.progress);
           drawFrame(frame);
@@ -263,9 +267,22 @@ export default function HeroScrollSequence() {
       });
     }, section);
 
+    rafId = requestAnimationFrame(() => {
+      if (!mounted) return;
+      resizeCanvas();
+      if (firstImg.complete && firstImg.naturalWidth) {
+        onFirstLoad();
+      } else {
+        firstImg.addEventListener('load', onFirstLoad, { once: true });
+        if (!firstImg.src) loadImage(0);
+      }
+      ScrollTrigger.refresh();
+    });
+
     return () => {
       mounted = false;
       if (preloadTimeout) window.clearTimeout(preloadTimeout);
+      cancelAnimationFrame(rafId);
       window.removeEventListener('resize', resizeCanvas);
       gsapCtx.revert();
     };
