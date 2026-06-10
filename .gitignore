@@ -44,6 +44,3 @@ next-env.d.ts
 .idea/
 .vscode/*
 !.vscode/extensions.json
-
-# generated hero frames (regenerate with: npm run hero:frames)
-/public/hero-sequence/
