@@ -1,4 +1,6 @@
-.sequenceHero {
+/* ─── Section ──────────────────────────────────────────────────────── */
+
+.hero {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -8,15 +10,20 @@
   background: var(--bg);
 }
 
-.video {
+/* ─── Canvas ───────────────────────────────────────────────────────── */
+
+.canvas {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: block;
   z-index: 0;
+  /* Own compositing layer prevents iOS Safari from clearing the canvas
+     when GSAP switches the section to position:fixed for pinning */
   will-change: transform;
+  transform: translateZ(0);
 }
+
+/* ─── Dark gradient overlay ────────────────────────────────────────── */
 
 .overlay {
   position: absolute;
@@ -25,12 +32,14 @@
   pointer-events: none;
   background: linear-gradient(
     108deg,
-    rgba(7, 7, 8, 0.92) 0%,
-    rgba(7, 7, 8, 0.55) 38%,
-    rgba(7, 7, 8, 0.35) 62%,
-    rgba(7, 7, 8, 0.75) 100%
+    rgba(7, 7, 8, 0.88) 0%,
+    rgba(7, 7, 8, 0.48) 38%,
+    rgba(7, 7, 8, 0.30) 62%,
+    rgba(7, 7, 8, 0.70) 100%
   );
 }
+
+/* ─── Text layer ───────────────────────────────────────────────────── */
 
 .textLayer {
   position: absolute;
@@ -43,28 +52,18 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  max-width: min(520px, 42vw);
+  max-width: min(520px, 44vw);
   padding: 0 2rem;
   will-change: transform, opacity;
 }
 
-.textLeft {
-  left: max(2rem, calc((100% - 1200px) / 2 + 1.5rem));
-}
+.textLeft  { left:  max(2rem, calc((100% - 1200px) / 2 + 1.5rem)); }
+.textRight { right: max(2rem, calc((100% - 1200px) / 2 + 1.5rem)); text-align: right; }
 
-.textRight {
-  right: max(2rem, calc((100% - 1200px) / 2 + 1.5rem));
-  text-align: right;
-}
+.textRight .accentBar { margin-left: auto; transform-origin: right center; }
+.textRight .eyebrow   { justify-content: flex-end; }
 
-.textRight .accent {
-  margin-left: auto;
-  transform-origin: right center;
-}
-
-.textRight .eyebrow {
-  justify-content: flex-end;
-}
+/* ─── Eyebrow ──────────────────────────────────────────────────────── */
 
 .eyebrow {
   display: inline-flex;
@@ -84,25 +83,19 @@
   height: 8px;
   border-radius: 50%;
   background: var(--red);
-  animation: heroPulse 2s ease-out infinite;
   flex-shrink: 0;
+  animation: pulse 2s ease-out infinite;
 }
 
-@keyframes heroPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(206, 31, 43, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 12px rgba(206, 31, 43, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(206, 31, 43, 0);
-  }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(206, 31, 43, 0.7); }
+  70%  { box-shadow: 0 0 0 12px rgba(206, 31, 43, 0);   }
+  100% { box-shadow: 0 0 0 0   rgba(206, 31, 43, 0);   }
 }
 
-.titleWrap {
-  margin-bottom: 0;
-}
+/* ─── Heading ──────────────────────────────────────────────────────── */
+
+.titleWrap { margin-bottom: 0; }
 
 .titleLine {
   overflow: hidden;
@@ -120,11 +113,11 @@
   will-change: transform;
 }
 
-.titleAccent {
-  color: var(--red);
-}
+.titleRed { color: var(--red); }
 
-.accent {
+/* ─── Red accent bar ───────────────────────────────────────────────── */
+
+.accentBar {
   width: 72px;
   height: 4px;
   background: var(--red);
@@ -133,6 +126,8 @@
   transform: scaleX(0);
 }
 
+/* ─── Body copy ────────────────────────────────────────────────────── */
+
 .body {
   font-size: 1rem;
   line-height: 1.75;
@@ -140,9 +135,9 @@
   max-width: 480px;
 }
 
-.textRight .body {
-  margin-left: auto;
-}
+.textRight .body { margin-left: auto; }
+
+/* ─── CTAs ─────────────────────────────────────────────────────────── */
 
 .ctas {
   display: flex;
@@ -152,9 +147,9 @@
   pointer-events: auto;
 }
 
-.textRight .ctas {
-  justify-content: flex-end;
-}
+.textRight .ctas { justify-content: flex-end; }
+
+/* ─── Progress bar ─────────────────────────────────────────────────── */
 
 .progress {
   position: absolute;
@@ -168,7 +163,7 @@
   gap: 0.75rem;
 }
 
-.progressTrack {
+.track {
   width: 120px;
   height: 2px;
   background: rgba(237, 232, 226, 0.15);
@@ -176,16 +171,15 @@
   overflow: hidden;
 }
 
-.progressFill {
+.fill {
   width: 100%;
   height: 100%;
   background: var(--red);
   transform-origin: left center;
   transform: scaleX(0);
-  animation: none;
 }
 
-.progressLabel {
+.label {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.62rem;
   font-weight: 600;
@@ -193,6 +187,8 @@
   text-transform: uppercase;
   color: rgba(237, 232, 226, 0.35);
 }
+
+/* ─── Mobile ───────────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
   .textBlock {
@@ -203,20 +199,12 @@
   }
 
   .textRight .eyebrow,
-  .textRight .ctas {
-    justify-content: flex-start;
-  }
-
-  .textRight .body {
-    margin-left: 0;
-  }
-
-  .textRight .accent {
+  .textRight .ctas    { justify-content: flex-start; }
+  .textRight .body    { margin-left: 0; }
+  .textRight .accentBar {
     margin-left: 0;
     transform-origin: left center;
   }
 
-  .titleWord {
-    font-size: clamp(2.2rem, 10vw, 3.4rem);
-  }
+  .titleWord { font-size: clamp(2.2rem, 10vw, 3.4rem); }
 }
