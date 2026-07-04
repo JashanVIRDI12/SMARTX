@@ -28,7 +28,7 @@ export default function Footer() {
         <div className={`container ${styles.grid}`}>
           <div className={styles.brand}>
             <Link href="/">
-              <img src="/logosmartx.png" alt="Smart X Logistics" className={styles.logo} />
+              <img src="/logosmartx-white.png" alt="SmartX Logistics" className={styles.logo} />
             </Link>
             <p className={styles.tagline}>
               Comprehensive transportation solutions from origin to door. We handle all pre-shipping, in-transit, and post-delivery needs.
@@ -72,7 +72,7 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Smart X Logistics Inc. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} SmartX Logistics Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>

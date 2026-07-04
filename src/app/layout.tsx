@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import ScrollTriggerCleanup from '@/components/ScrollTriggerCleanup';
 
 export const metadata: Metadata = {
-  title: 'Smart X Logistics Inc. — North America\'s Premier Transport Partner',
-  description: 'Smart X Logistics is a Calgary, Alberta based trucking and logistics company providing transportation services across Canada and the US.',
+  title: 'SmartX Logistics Inc. — North America\'s Premier Transport Partner',
+  description: 'SmartX Logistics is a Calgary, Alberta based trucking and logistics company providing transportation services across Canada and the US.',
 };
 
 export default function RootLayout({

@@ -52,8 +52,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  max-width: min(520px, 44vw);
+  width: min(520px, 44vw);
   padding: 0 2rem;
+  box-sizing: border-box;
   will-change: transform, opacity;
 }
 
@@ -106,7 +107,7 @@
   display: block;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.5rem);
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -192,7 +193,7 @@
 
 @media (max-width: 900px) {
   .textBlock {
-    max-width: calc(100% - 2.5rem);
+    width: calc(100% - 2.5rem);
     left: 1.25rem !important;
     right: auto !important;
     text-align: left;
@@ -206,5 +207,5 @@
     transform-origin: left center;
   }
 
-  .titleWord { font-size: clamp(2.2rem, 10vw, 3.4rem); }
+  .titleWord { font-size: clamp(2.1rem, 10vw, 3.4rem); }
 }

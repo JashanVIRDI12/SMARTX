@@ -39,7 +39,7 @@ const TIPS = [
 ];
 
 const PILLARS = [
-  { icon: Navigation,   title: 'ELD Tracking',          desc: 'For tracking services we use ELD of Hutch Systems, monitoring speed, braking, routes, idling, and time working in real time.' },
+  { icon: Navigation,   title: 'ELD Tracking',          desc: 'Our ELD tracking system monitors speed, braking, routes, idling, and time working in real time.' },
   { icon: Lock,         title: 'Cargo Security',         desc: 'Secure yards, advanced locking mechanisms, and multi-layered security measures prevent theft and unauthorized access at every stage.' },
   { icon: Activity,     title: 'Satisfactory Rating',    desc: 'Our company carries a "Satisfactory" rating — the best available — with both U.S. and Canadian transportation regulators.' },
   { icon: ShieldCheck,  title: 'Driver Compliance',      desc: 'New driver hiring practices meet all Federal Motor Carrier Standards. We employ some of the most experienced, responsible operators available.' },
@@ -108,7 +108,7 @@ export default function SafetyContent() {
       {/* ─── Hero ─── */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <img src={SITE_IMAGES.aerial} alt="" className={styles.heroBgImg} />
+          <img src={SITE_IMAGES.warehouse} alt="" className={styles.heroBgImg} />
           <div className={styles.heroBgOverlay} />
         </div>
         <div className={`container ${styles.heroInner}`}>
@@ -137,22 +137,22 @@ export default function SafetyContent() {
               <span className={styles.red}>Top Priority</span>
             </h2>
             <p className={styles.introBody}>
-              Smart X Logistics focuses on safety and security, both on and off the street. Our drivers meet and pass industry standards. Smart X Logistics emphasize not only on the drivers&apos; past driving records but also on the proper driving test and knowledge test.
+              SmartX Logistics focuses on safety and security, both on and off the street. Our drivers meet and pass industry standards. SmartX Logistics emphasize not only on the drivers&apos; past driving records but also on the proper driving test and knowledge test.
             </p>
             <p className={styles.introBody}>
               Drivers need to pass the drug test to maintain the safety and security around. New recruited drivers start working with experienced drivers to learn company protocols and to gain experience driving across borders.
             </p>
             <p className={styles.introBody}>
-              Not limiting to this, our team in office is always keeping a track of the drivers and the truck by using technology. Smart X Logistics tracks imperative driving insights — for example, speed, braking, routes, idling, and time working.
+              Not limiting to this, our team in office is always keeping a track of the drivers and the truck by using technology. SmartX Logistics tracks imperative driving insights — for example, speed, braking, routes, idling, and time working.
             </p>
             <p className={styles.introBody}>
-              For tracking services we use <strong>ELD of Hutch Systems</strong>. We can also provide tracking services of our trucks to customers if they request to track their load.
+              For tracking services we use <strong>advanced ELD technology</strong>. We can also provide tracking services of our trucks to customers if they request to track their load.
             </p>
           </div>
 
           <div className={styles.introSide}>
             <div className={`${styles.introImg} js-img-reveal`}>
-              <img src={SITE_IMAGES.fleetDawn} alt="Smart X fleet" />
+              <img src="/newimg/sftyimage.png" alt="SmartX drivers" />
             </div>
             <div className={`${styles.introBadge} js-badge`}>
               <ShieldCheck size={28} className={styles.introBadgeIcon} />

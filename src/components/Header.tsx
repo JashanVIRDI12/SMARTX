@@ -61,7 +61,7 @@ export default function Header() {
         <div className={`container ${styles.inner}`}>
 
           <Link href="/" className={styles.logo}>
-            <img src="/logosmartx.png" alt="SmartX Logistics" className={styles.logoImg} />
+            <img src="/logosmartx-white.png" alt="SmartX Logistics" className={styles.logoImg} />
           </Link>
 
           {/* Desktop-only nav */}

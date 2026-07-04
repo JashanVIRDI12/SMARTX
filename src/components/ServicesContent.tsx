@@ -35,24 +35,24 @@ const SERVICES = [
     num: '03',
     icon: Truck,
     title: 'Tri-Axle Service',
-    img: SITE_IMAGES.wireframe,
-    body: 'Smart X has a fleet of tri-axle units. Most of these units are refrigerated trailers, and half of those units are dual temperature trailers. Although many of our customers use our services for temperature-controlled shipments, many others choose SmartX Logistics for dry shipments, taking advantage of our capacity to move heavier loads.',
+    img: '/newimg/triaxle.png',
+    body: 'SmartX has a fleet of tri-axle units. Most of these units are refrigerated trailers, and half of those units are dual temperature trailers. Although many of our customers use our services for temperature-controlled shipments, many others choose SmartX Logistics for dry shipments, taking advantage of our capacity to move heavier loads.',
   },
   {
     id: 'multitemp',
     num: '04',
     icon: Layers,
     title: 'Multi-Temp Service',
-    img: SITE_IMAGES.aerial,
-    body: 'Smart X Logistics has built our tri-axle fleet around an equal number of single temperature and multi-temperature trailers. These units provide the unique ability to ship products together, resulting in considerable cost savings year over year. But what really sets our services apart is our attention to detail and receptiveness to the needs of each client.',
+    img: SITE_IMAGES.fleetDawn,
+    body: 'SmartX Logistics has built our tri-axle fleet around an equal number of single temperature and multi-temperature trailers. These units provide the unique ability to ship products together, resulting in considerable cost savings year over year. But what really sets our services apart is our attention to detail and receptiveness to the needs of each client.',
   },
   {
     id: 'warehousing',
     num: '05',
     icon: Warehouse,
     title: 'Warehousing Service',
-    img: SITE_IMAGES.warehouse,
-    body: 'Get this service done quickly and efficiently by the experts here at Smart X Logistics. We understand how important it is to feel confident and worry free when it comes to the service we provide. Our dedicated staff invests the time and energy necessary to be well prepared for any unique requests or special concerns our clients may have.',
+    img: '/newimg/warehouseimg.png',
+    body: 'Get this service done quickly and efficiently by the experts here at SmartX Logistics. We understand how important it is to feel confident and worry free when it comes to the service we provide. Our dedicated staff invests the time and energy necessary to be well prepared for any unique requests or special concerns our clients may have.',
   },
 ];
 
@@ -76,7 +76,7 @@ const FEATURED = [
 
 const FAQS = [
   {
-    q: 'What services does Smart X Logistics provide?',
+    q: 'What services does SmartX Logistics provide?',
     a: 'SmartX Logistics provides fast worldwide delivery, end-to-end logistics solutions, real-time tracking, warehouse storage, and strict safety and compliance measures.',
   },
   {
@@ -198,7 +198,7 @@ export default function ServicesContent() {
             <span className="eyebrow">Our Featured</span>
             <h2 className={styles.featuredTitle}>
               Unique Qualities That Make<br />
-              <span className={styles.red}>Smart X Logistics</span> Special
+              <span className={styles.red}>SmartX Logistics</span> Special
             </h2>
           </div>
           <div className={`${styles.featuredGrid} js-stagger-group`}>
@@ -220,7 +220,7 @@ export default function ServicesContent() {
             <span className="eyebrow">FAQ</span>
             <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
             <p className={styles.faqSub}>
-              Smart X Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
+              SmartX Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
             </p>
             <Link href="/contact-us" className="btn-primary" style={{ marginTop: '2rem', display: 'inline-flex' }}>
               Ask Us Anything <ArrowRight size={17} />

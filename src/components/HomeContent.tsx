@@ -35,9 +35,9 @@ const SERVICES = [
     num: '03',
     icon: PackageOpen,
     title: 'Warehousing',
-    brief: 'Get this service done quickly and efficiently by the experts here at Smart X Logistics.',
+    brief: 'Get this service done quickly and efficiently by the experts here at SmartX Logistics.',
     desc: 'We understand how important it is to feel confident and worry-free when it comes to storage. Our dedicated staff invests the time and energy necessary to be well prepared for any unique requests or special concerns.',
-    img: SITE_IMAGES.warehouse,
+    img: '/newimg/warehouseimg.png',
   },
 ];
 
@@ -53,7 +53,7 @@ const CAPABILITIES = [
   { icon: Navigation,   title: 'Real Time Tracking',  desc: 'State-of-the-art GPS and telematics systems monitor your shipment around the clock so you always know where your cargo is.' },
   { icon: DollarSign,   title: 'Reasonable Price',     desc: 'Competitive, transparent rates with no hidden fees — we work with your budget to find the best solution for your needs.' },
   { icon: ShieldCheck,  title: 'Security for Cargo',   desc: 'Multi-layered physical and digital security protocols protect your freight from origin to delivery, every single time.' },
-  { icon: CreditCard,   title: 'Easy Payments',        desc: 'Streamlined invoicing and flexible payment options make working with Smart X Logistics effortless from start to finish.' },
+  { icon: CreditCard,   title: 'Easy Payments',        desc: 'Streamlined invoicing and flexible payment options make working with SmartX Logistics effortless from start to finish.' },
   { icon: LifeBuoy,     title: 'End Solutions',        desc: 'Comprehensive transportation services from the point of origin to the recipient\'s door — we handle everything in between.' },
   { icon: Scale,        title: 'Responsibility',        desc: 'Our mission is to design innovative solutions while building and nurturing long-term relationships with every client we serve.' },
 ];
@@ -227,7 +227,7 @@ export default function HomeContent() {
               <span className={styles.redText}>Transport Services</span>
             </h2>
             <p className={styles.whoWeAreBody}>
-              Smart X Logistics is a Calgary, Alberta based Trucking and Logistics company, providing transportation services all over Canada and US. Smart X Logistics Inc. provides clients with reliable and flexible transport solutions, delivering goods safely and on schedule.
+              SmartX Logistics is a Calgary, Alberta based Trucking and Logistics company, providing transportation services all over Canada and US. SmartX Logistics Inc. provides clients with reliable and flexible transport solutions, delivering goods safely and on schedule.
             </p>
             <p className={styles.whoWeAreBody}>
               We have the vehicles, facilities, and personnel to accommodate all your transportation needs. Whether it&apos;s one pallet or thousands, we handle all pre-shipping, in transit and post delivery needs.
@@ -245,11 +245,11 @@ export default function HomeContent() {
 
           <div className={styles.whoWeAreImages}>
             <div className={`${styles.whoWeAreImgMain} js-img-reveal`}>
-              <img src={SITE_IMAGES.highway} alt="Smart X fleet" />
+              <img src={SITE_IMAGES.highway} alt="SmartX fleet" />
             </div>
             <div className={styles.whoWeAreImgSide}>
               <div className={`${styles.whoWeAreImgSmall} js-img-reveal`}>
-                <img src={SITE_IMAGES.aerial} alt="Aerial fleet view" />
+                <img src={SITE_IMAGES.warehouse} alt="Aerial fleet view" />
               </div>
               <div className={styles.whoWeAreCard}>
                 <div className={`stat-num ${styles.whoWeAreCardNum}`}>15+</div>
@@ -267,10 +267,10 @@ export default function HomeContent() {
             <span className="eyebrow">Affiliations</span>
             <h2 className={styles.affiliationsTitle}>Comprehensive Transportation — Origin to Door</h2>
             <p className={styles.affiliationsBody}>
-              Comprehensive transportation services are provided from the point of origin to the recipient&apos;s door. Smart X Logistics handles all pre-shipping, in transit and post delivery needs.
+              Comprehensive transportation services are provided from the point of origin to the recipient&apos;s door. SmartX Logistics handles all pre-shipping, in transit and post delivery needs.
             </p>
             <p className={styles.affiliationsBody}>
-              Smart X Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
+              SmartX Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
             </p>
 
             <div className={styles.affiliationsBars}>
@@ -306,7 +306,7 @@ export default function HomeContent() {
               </Link>
             </div>
             <div className={`${styles.affiliationsImg} js-img-reveal`}>
-              <img src={SITE_IMAGES.wireframe} alt="Logistics technology" />
+              <img src="/newimg/triaxle.png" alt="Logistics technology" />
             </div>
           </div>
         </div>
@@ -362,7 +362,7 @@ export default function HomeContent() {
               Ready to Move<br />What Matters?
             </h2>
             <p className={styles.parallaxDesc}>
-              Smart X Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows us to quickly select the best service methods for your needs.
+              SmartX Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows us to quickly select the best service methods for your needs.
             </p>
             <Link href="/request-a-quote" className="btn-primary">
               Request a Free Quote <ArrowRight size={17} />

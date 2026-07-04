@@ -62,12 +62,12 @@ const WHY_CHOOSE = [
 
 const TESTIMONIALS = [
   {
-    quote: 'Smart X Logistics has been a game-changer for our supply chain. On-time, every time — and their team is always reachable when we need them.',
+    quote: 'SmartX Logistics has been a game-changer for our supply chain. On-time, every time — and their team is always reachable when we need them.',
     name: 'James T.',
     role: 'Operations Manager, Retail Co.',
   },
   {
-    quote: 'We\'ve worked with many carriers. Smart X stands out for their professionalism and the care they take with temperature-sensitive freight.',
+    quote: 'We\'ve worked with many carriers. SmartX stands out for their professionalism and the care they take with temperature-sensitive freight.',
     name: 'Sara M.',
     role: 'Procurement Lead, Food Distribution',
   },
@@ -155,7 +155,7 @@ export default function AboutContent() {
               Are you interested in working with a professional Trucking Company? We supply all the equipment and skills necessary to tackle just about every type of job our clients have for us, no matter how big or small it may be.
             </p>
             <p className={styles.introBody}>
-              We&apos;re committed to providing consistently reliable service in a timely and professional manner. You can take your freight &amp; logistics needs with a personal approach at Smart X Logistics.
+              We&apos;re committed to providing consistently reliable service in a timely and professional manner. You can take your freight &amp; logistics needs with a personal approach at SmartX Logistics.
             </p>
 
             <div className={`${styles.introHighlights} js-stagger-group`}>
@@ -182,10 +182,10 @@ export default function AboutContent() {
 
           <div className={styles.introImages}>
             <div className={`${styles.introImgMain} js-img-reveal`}>
-              <img src={SITE_IMAGES.highway} alt="Smart X truck" />
+              <img src={SITE_IMAGES.highway} alt="SmartX truck" />
             </div>
             <div className={`${styles.introImgSub} js-img-reveal`}>
-              <img src={SITE_IMAGES.wireframe} alt="Logistics technology" />
+              <img src="/newimg/triaxle.png" alt="Logistics technology" />
             </div>
           </div>
         </div>
@@ -238,7 +238,7 @@ export default function AboutContent() {
 
           <div className={styles.contributeRight}>
             <div className={`${styles.contributeImg} js-img-reveal`}>
-              <img src={SITE_IMAGES.aerial} alt="Fleet overview" />
+              <img src={SITE_IMAGES.warehouse} alt="Fleet overview" />
             </div>
             <div className={`${styles.coverageList} js-stagger-group`}>
               {COVERAGE_POINTS.map((point) => (
@@ -261,7 +261,7 @@ export default function AboutContent() {
               <span className="eyebrow">Our Mission</span>
               <h2 className={styles.mvTitle}>Our Mission</h2>
               <p className={styles.mvBody}>
-                At Smart X Logistics, our mission is to provide reliable, efficient, and customer-focused transportation and logistics solutions across Canada and the United States. We are committed to delivering freight safely and on time while maintaining the highest industry standards in service, technology, and sustainability. Through innovation, professionalism, and a dedication to excellence, we strive to build lasting partnerships and support businesses in achieving their logistics goals.
+                At SmartX Logistics, our mission is to provide reliable, efficient, and customer-focused transportation and logistics solutions across Canada and the United States. We are committed to delivering freight safely and on time while maintaining the highest industry standards in service, technology, and sustainability. Through innovation, professionalism, and a dedication to excellence, we strive to build lasting partnerships and support businesses in achieving their logistics goals.
               </p>
             </div>
             <div className={`${styles.mvCard} ${styles.mvCardAlt}`}>
@@ -298,7 +298,7 @@ export default function AboutContent() {
             </Link>
           </div>
           <div className={`${styles.brandImg} js-img-reveal`}>
-            <img src={SITE_IMAGES.warehouse} alt="Smart X warehousing" />
+            <img src="/newimg/warehouseimg.png" alt="SmartX warehousing" />
           </div>
         </div>
       </section>
@@ -308,7 +308,7 @@ export default function AboutContent() {
         <div className="container">
           <div className={`${styles.whyHeader} js-reveal`}>
             <span className="eyebrow">Why Choose Trucking</span>
-            <h2 className={styles.whyTitle}>Why Choose Smart X Logistics</h2>
+            <h2 className={styles.whyTitle}>Why Choose SmartX Logistics</h2>
           </div>
           <div className={`${styles.whyGrid} js-stagger-group`}>
             {WHY_CHOOSE.map(({ icon: Icon, title, desc }) => (
@@ -329,7 +329,7 @@ export default function AboutContent() {
             <span className="eyebrow">Testimonial</span>
             <h2 className={styles.testiTitle}>What Our Customers Say</h2>
             <p className={styles.testiSub}>
-              Smart X Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
+              SmartX Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight &amp; distribution companies across North America allows the company to quickly select the best service methods specific to your needs.
             </p>
           </div>
           <div className={`${styles.testiGrid} js-stagger-group`}>

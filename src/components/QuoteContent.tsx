@@ -78,7 +78,7 @@ export default function QuoteContent() {
             <span className="eyebrow">Move Your Business Forward</span>
             <h2 className={styles.infoTitle}>Let&apos;s Move What<br />Matters to You</h2>
             <p className={styles.infoBody}>
-              Smart X Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight and distribution companies across North America allows us to quickly select the best service methods specific to your needs.
+              SmartX Logistics ships all goods via every form of transportation. Our standing link with an endless network of freight and distribution companies across North America allows us to quickly select the best service methods specific to your needs.
             </p>
 
             <div className={`${styles.trust} js-trust`}>

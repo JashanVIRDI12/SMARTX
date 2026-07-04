@@ -20,8 +20,8 @@ const SEGMENTS = [
     side: 'left' as const,
     eyebrow: 'Live · 24/7 Network Operations',
     lines: ['Secure &', 'Reliable'],
-    accent: 'Shipping',
-    body: '100% fastest logistic transport solution — Smart X Logistics blends elite vehicles with cutting-edge technology to deliver your cargo safely, on time, every time.',
+    accent: 'Transport',
+    body: '100% fastest logistic transport solution — SmartX Logistics blends elite vehicles with cutting-edge technology to deliver your cargo safely, on time, every time.',
     ctas: true,
   },
   {
